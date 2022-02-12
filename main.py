@@ -8,7 +8,7 @@ OPS = {
     'XOR': 0x6,
     'LSL': 0x7,
     'LDR': 0x8,
-    'LSR': 0x9,
+    'STR': 0xA,
 }
 OPCJUMP = {
     'JMP': 0xC0,
@@ -88,7 +88,10 @@ def translate(a):
 infile = open("assembly.txt", "r")
 outfile = open("machine.ram", "w")
 address = 0
+
 for line in infile:
+    if line == []:
+      pass
     line = line.replace(",", "")
     split = line.split()
     machine = translate(split)
@@ -100,4 +103,4 @@ infile.close()
 outfile.close()
 #print(translate(ar))
 
-print("this onyl")
+print("Finished")
