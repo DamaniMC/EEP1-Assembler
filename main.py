@@ -98,10 +98,12 @@ for line in infile:
     if line=="\n":
       continue
     line = line.replace(",", "")
+    line = line.replace("["," ")
+    line = line.replace("]"," ")
     split = line.split()
     machine = translate(split)
     toWrite = str(str(hex(address)) + " " + str(machine) + "\n")
-    print(toWrite)
+    print(toWrite.strip("\n"))
     outfile.write(toWrite)
     address += 1
 infile.close()
