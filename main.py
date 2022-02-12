@@ -66,17 +66,22 @@ def translate(a):
     #Creates the Operand format
     if len(a) == 4:
         i8 = 0 << 8
-        i5_7 = convReg(
-            a[2]) << 5  #takes the register number then shifts accordingly
+        i5_7 = convReg(a[2]) << 5  #takes the register number then shifts accordingly
         i0_4 = convImm(a[3],5)  # converts 5bits operand to an integer
         operand = i5_7 + i0_4  #adds together
-    else:
+    elif len(a)==3:
         i8 = 1 << 8
         i0_7 = convImm(a[2],8)
         operand = i0_7
+    else:
+        i8 = 1 << 8
+        i0_7 = convImm(a[1],8)
+        operand = i0_7
     #Creates the Opcode format
-    if "J" in a[0]:
+    if "J" in a[0] or a[0]=="RET":
         opcode = int(OPCJUMP[a[0]]) << 8
+        if a[0]=="RET":
+          operand=0
     else:
         i12_15 = int(OPS[a[0]]) << 12
         i9_11 = convReg(a[1]) << 9
