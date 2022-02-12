@@ -90,8 +90,8 @@ outfile = open("machine.ram", "w")
 address = 0
 
 for line in infile:
-    if line == []:
-      pass
+    if line=="\n":
+      continue
     line = line.replace(",", "")
     split = line.split()
     machine = translate(split)
