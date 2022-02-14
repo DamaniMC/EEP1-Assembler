@@ -1,8 +1,8 @@
-MOV R0 #0 
+MOV R0 #65 
 STR R0 #0 
-MOV R6 #3
+JMP #7 
 LDR R0 #0 
-ADD R0 #1 
+SUB R0 #55 
 STR R0 #0 
-SUB R6 #1
-JPL #3 
+RET #0 
+JSR #3 
